@@ -1,4 +1,4 @@
-# zexplorer: a `lexbor` in `Zig` project
+# zexplorer: a lexbor in Zig project
 
 [![Zig support](https://img.shields.io/badge/Zig-0.15.1-color?logo=zig&color=%23f3ab20)](http://github.com/ndrean/z-html)
 [![Scc Code Badge](https://sloc.xyz/github/ndrean/z-html/)](https://github.com/ndrean/z-html)
