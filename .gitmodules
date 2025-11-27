@@ -1,0 +1,3 @@
+[submodule "lexbor"]
+	path = lexbor
+	url = git@github.com:lexbor/lexbor.git

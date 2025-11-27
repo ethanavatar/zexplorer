@@ -13,15 +13,15 @@ pub fn build(b: *std.Build) void {
         .root_module = b.createModule(.{
             .target = target,
             .optimize = optimize,
+            .link_libc = true,
         }),
     });
     zexplorer_lib.addCSourceFile(.{
         .file = b.path("src/minimal.c"),
         .flags = &.{"-std=c99"},
     });
-    zexplorer_lib.addIncludePath(lexbor_src_path);
-    zexplorer_lib.addObjectFile(lexbor_static_lib_path);
-    zexplorer_lib.linkLibC();
+    zexplorer_lib.root_module.addIncludePath(lexbor_src_path);
+    zexplorer_lib.root_module.addObjectFile(lexbor_static_lib_path);
 
     const zexplorer_module = b.addModule(
         "zexplorer",
@@ -50,7 +50,6 @@ pub fn build(b: *std.Build) void {
     exe.addObjectFile(lexbor_static_lib_path);
     exe.linkLibC();
     exe.linkLibrary(zexplorer_lib);
-    b.installArtifact(exe);
 
     // Run step
     const run_cmd = b.addRunArtifact(exe);
